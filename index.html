@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fetch Api</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <button id="getData">Get data</button>
-    <button id="getUsers">Users</button>
-    <button id="getPosts">Get Json</button>
-    <div id="output"></div>
+    <div class="container">
+      <h1 class="display-4 mb-4">Fetch API</h1>
 
+      <div class="d-flex">
+        <button id="getData" class="btn btn secondary mr-4">Get data</button>
+        <button id="getUsers" class="btn btn secondary mr-4">Users</button>
+        <button id="getPosts" class="btn btn secondary mr-4">Get Json</button>
+      </div>
+      <hr />
+      <div id="output"></div>
+    </div>
     <script>
       document.getElementById("getData").addEventListener("click", getTxt);
       document.getElementById("getUsers").addEventListener("click", getUsers);
@@ -32,10 +44,10 @@
             let output = "<h2>Users</h2>";
             data.forEach(function(user) {
               output += `
-                     <h2>ID:  ${user.id}</h2>
-                     <h2>Email:  ${user.email}</h2>
-                     <h2>Name:  ${user.name}</h2>
-                     `;
+                                 <h2>ID:  ${user.id}</h2>
+                                 <h2>Email:  ${user.email}</h2>
+                                 <h2>Name:  ${user.name}</h2>
+                                 `;
             });
             document.getElementById("output").innerHTML = output;
           });
@@ -48,11 +60,11 @@
             let output = "<h2>Posts</h2>";
             data.forEach(function(post) {
               output += `
-                 <div>
-                  <h3>${post.title} </h3>
-                  <p>${post.body}</p>
-                 </div>
-      `;
+                             <div>
+                              <h3>${post.title} </h3>
+                              <p>${post.body}</p>
+                             </div>
+                  `;
             });
             document.getElementById("output").innerHTML = output;
           });
