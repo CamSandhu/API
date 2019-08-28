@@ -25,15 +25,24 @@
       <div id="output"></div>
     </div>
     <script>
-      document.getElementById("getData").addEventListener("click", getTxt);
+      document
+        .getElementById("getData")
+        .addEventListener("click", () => getTxt("john"));
       document.getElementById("getUsers").addEventListener("click", getUsers);
       document.getElementById("getPosts").addEventListener("click", getJson);
 
-      function getTxt() {
-        fetch("sample.txt")
-          .then(res => res.text())
+      function getTxt(name) {
+        let output = "<h2>User</h2>";
+        fetch(`https://api.github.com/users/${name}`)
+          .then(res => {
+            return res.json();
+          })
           .then(data => {
-            document.getElementById("output").innerHTML = data;
+            console.log(data);
+            output += `<h4>${data.bio}</h4>
+                                 <h4>${data.company}</h4>
+         `;
+            document.getElementById("output").innerHTML = output;
           });
       }
 
